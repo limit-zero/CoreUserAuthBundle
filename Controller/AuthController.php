@@ -1,10 +1,9 @@
 <?php
 
-namespace Limit0\ModlrAuthBundle\Controller\Manage;
+namespace Limit0\ModlrAuthBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 
 class AuthController extends Controller
 {
