@@ -22,9 +22,9 @@ class Limit0ModlrAuthExtension extends Extension
         // Process the config.
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $container->setParameter('modlr_auth_bundle.jwt.secret', $config['jwt']['secret']);
-        $container->setParameter('modlr_auth_bundle.jwt.issuer', $config['jwt']['issuer']);
-        $container->setParameter('modlr_auth_bundle.jwt.ttl',    $config['jwt']['ttl']);
+        $container->setParameter('limit0_modlr_auth.jwt.secret', $config['jwt']['secret']);
+        $container->setParameter('limit0_modlr_auth.jwt.issuer', $config['jwt']['issuer']);
+        $container->setParameter('limit0_modlr_auth.jwt.ttl',    $config['jwt']['ttl']);
 
         // Load bundle services.
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));

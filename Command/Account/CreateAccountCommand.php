@@ -2,6 +2,7 @@
 
 namespace Limit0\ModlrAuthBundle\Command\Account;
 
+use As3\Modlr\Store\Store;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

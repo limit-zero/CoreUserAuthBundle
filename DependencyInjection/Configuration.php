@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('modlr_auth_bundle')
+        $treeBuilder->root('limit0_modlr_auth')
             ->children()
                 ->append($this->getJwtNode())
             ->end()

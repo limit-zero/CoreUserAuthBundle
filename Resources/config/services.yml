@@ -37,7 +37,7 @@ services:
     modlr_auth_bundle.security.jwt.generator.core_user:
         private: true
         class: Limit0\ModlrAuthBundle\Security\JWT\CoreUserGenerator
-        arguments: [ "%modlr_auth_bundle.jwt.issuer%", "modlr_auth_bundle.jwt.ttl%", "%modlr_auth_bundle.jwt.secret%" ]
+        arguments: [ "%limit0_modlr_auth.jwt.issuer%", "limit0_modlr_auth.jwt.ttl%", "%limit0_modlr_auth.jwt.secret%" ]
 
     modlr_auth_bundle.security.login_listener:
         private: true
@@ -58,14 +58,14 @@ services:
 
     modlr_auth_bundle.command.user.create:
         private: true
-        class: Limit0\ModlrAuthBundle\Command\User\Create
+        class: Limit0\ModlrAuthBundle\Command\User\CreateUserCommand
         arguments: [ "@as3_modlr.store" ]
         tags:
             - { name: "console.command"}
 
     modlr_auth_bundle.command.account.create:
         private: true
-        class: Limit0\ModlrAuthBundle\Command\Account\Create
+        class: Limit0\ModlrAuthBundle\Command\Account\CreateAccountCommand
         arguments: [ "@as3_modlr.store" ]
         tags:
             - { name: "console.command"}
