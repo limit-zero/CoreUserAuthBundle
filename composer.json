@@ -19,6 +19,7 @@
         "php": ">=5.4",
         "symfony/framework-bundle": ">=2.0 <2.7 || ^3.0",
         "symfony/yaml": ">=2.0 <2.7 || ^3.0",
-        "as3/modlr-bundle": "dev-master"
+        "as3/modlr-bundle": "dev-master",
+        "lcobucci/jwt": "^3.2"
     }
 }
