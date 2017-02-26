@@ -96,6 +96,7 @@ Once you've configured your firewalls, configure your access controlled paths.
 To lock out the modlr API (replace `api/rest` with your configured modlr rest api prefix):
 ```yml
     access_control:
+        - { path: ^/api/auth, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
         - { path: ^/api/rest, roles: [ ROLE_ADMIN\USER ] }
 ```
 
@@ -103,5 +104,9 @@ Or locking down the entire application can be done as well:
 
 ```yml
     access_control:
+
+    access_control:
+        - { path: ^/api/auth, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
         - { path: ^/, roles: [ ROLE_ADMIN\USER ] }
+
 ```
