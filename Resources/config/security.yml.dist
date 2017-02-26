@@ -1,0 +1,45 @@
+security:
+
+    providers:
+        in_memory:
+            memory: ~
+        hwi:
+            id: hwi_oauth.user.provider
+        core_user:
+            id: modlr_auth_bundle.security.user_provider.core_user
+
+    encoders:
+        Limit0\Bundle\ModlrAuthBundle\Security\User\CoreUser:
+            algorithm: bcrypt
+            cost: 13
+
+    firewalls:
+
+        api:
+            context: core
+            pattern: ^/api\/1\.0
+            provider: core_user
+            guard:
+                authenticators:
+                    - modlr_auth_bundle.security.authenticator.api
+        manage:
+            context: core
+            anonymous: ~
+            provider: core_user
+            guard:
+                authenticators:
+                    - modlr_auth_bundle.security.authenticator.core_user
+            remember_me:
+                secret: "%modlr_auth_bundle.jwt.secret%"
+                lifetime: 63072000
+                name: __modlr-auth
+                always_remember_me: true
+            logout:
+                path: /api/auth/user/destroy
+                # delete_cookies: ~ # @todo Will need to determine if account cookies need deletion?
+                invalidate_session: false
+                success_handler: modlr_auth_bundle.security.logout_success_handler
+
+    access_control:
+        - { path: ^/api/1\.0, roles: [ ROLE_ADMIN\USER ] }
+

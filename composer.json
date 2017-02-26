@@ -1,0 +1,24 @@
+{
+    "name": "limit0/modlr-auth-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "type": "library",
+    "description": "Implements core authentication services for projects using modlr",
+    "authors": [
+        {
+            "name": "Josh Worden",
+            "email": "josh@limit0.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Limit0\\ModlrAuthBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": ">=2.0 <2.7 || ^3.0",
+        "symfony/yaml": ">=2.0 <2.7 || ^3.0",
+        "as3/modlr-bundle": "dev-master"
+    }
+}

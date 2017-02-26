@@ -1,0 +1,39 @@
+core-user:
+    entity:
+        persistence:
+            key: mongodb
+            # db: CONFIGURE_ME
+            schemata:
+                - { keys: { email: 1 }, options: { unique: true }}
+    attributes:
+        givenName:
+            type: string
+        familyName:
+            type: string
+        email:
+            type: string
+        password:
+            type: string
+            serialize: false
+        salt:
+            type: string
+            serialize: false
+        lastLogin:
+            type: date
+        lastSeen:
+            type: date
+        logins:
+            type: integer
+            defaultValue: 0
+        remembers:
+            type: integer
+            defaultValue: 0
+        createdDate:
+            type: date
+            description: The date this item was created.
+        updatedDate:
+            type: date
+            description: The date this item was last updated by a user.
+        touchedDate:
+            type: date
+            description: 'The date this item was last touched, either by a user or by the system.'
