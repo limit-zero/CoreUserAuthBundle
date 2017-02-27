@@ -22,7 +22,7 @@ services:
         class: Limit0\ModlrAuthBundle\Security\Authenticator\CoreUserAuthenticator
         arguments: [ "@as3_modlr.api.adapter", "@security.http_utils", "@security.encoder_factory", "@modlr_auth_bundle.security.auth.generator_manager" ]
         calls:
-            - [ addRoute, [ "modlr_auth_bundle_auth_user_submit" ] ]
+            - [ addRoute, [ "modlr_auth_bundle_user_submit" ] ]
 
     modlr_auth_bundle.security.authenticator.core_user.abstract:
         private: true
@@ -37,7 +37,7 @@ services:
     modlr_auth_bundle.security.jwt.generator.core_user:
         private: true
         class: Limit0\ModlrAuthBundle\Security\JWT\CoreUserGenerator
-        arguments: [ "%limit0_modlr_auth.jwt.issuer%", "limit0_modlr_auth.jwt.ttl%", "%limit0_modlr_auth.jwt.secret%" ]
+        arguments: [ "%limit0_modlr_auth.jwt.secret%", "%limit0_modlr_auth.jwt.issuer%", "%limit0_modlr_auth.jwt.ttl%" ]
 
     modlr_auth_bundle.security.login_listener:
         private: true
