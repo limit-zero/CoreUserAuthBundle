@@ -51,9 +51,8 @@ class CreateUserCommand extends Command
         $helper = $this->getHelper('question');
 
         $kvs = [
-            'username'  => $helper->ask($input, $output, new Question('Username: ')),
-            'password'  => $helper->ask($input, $output, new Question('Password: ')),
             'email'     => $helper->ask($input, $output, new Question('Email:')),
+            'password'  => $helper->ask($input, $output, new Question('Password: ')),
             'givenName' => $helper->ask($input, $output, new Question('Given Name: ')),
             'familyName'=> $helper->ask($input, $output, new Question('Family Name: ')),
         ];
