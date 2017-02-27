@@ -6,6 +6,7 @@ use As3\Modlr\Store\Store;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * Creates a user account
@@ -47,13 +48,19 @@ class CreateAccountCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('<info>Creating a new account.</info>');
+        $helper = $this->getHelper('question');
 
         $kvs = [
-            'name'  => $input->ask('Name: '),
-            'key'   => $input->ask('Key: '),
+            'name'  => $helper->ask($input, $output, new Question('Account Name: ')),
+            'key'   => $helper->ask($input, $output, new Question('Account Key: ')),
         ];
 
-        $user = $this->store->create('core-account', $kvs);
-        $output->writeln(sprintf('<info>Created account "%s"</info>', $user->getId()));
+        $account = $this->store->create('core-account');
+        foreach ($kvs as $k => $v) {
+            $account->set($k, $v);
+        }
+        $account->save();
+
+        $output->writeln(sprintf('<info>Created account "%s"</info>', $account->getId()));
     }
 }

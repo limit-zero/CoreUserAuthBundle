@@ -6,6 +6,7 @@ use As3\Modlr\Store\Store;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * Creates a user account
@@ -47,17 +48,22 @@ class CreateUserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('<info>Creating a new user.</info>');
+        $helper = $this->getHelper('question');
 
         $kvs = [
-            'username'  => $input->ask('Username: '),
-            'password'  => $input->ask('Password: '),
-            'email'     => $input->ask('Email:'),
-            'givenName' => $input->ask('Given Name: '),
-            'familyName'=> $input->ask('Family Name: '),
+            'username'  => $helper->ask($input, $output, new Question('Username: ')),
+            'password'  => $helper->ask($input, $output, new Question('Password: ')),
+            'email'     => $helper->ask($input, $output, new Question('Email:')),
+            'givenName' => $helper->ask($input, $output, new Question('Given Name: ')),
+            'familyName'=> $helper->ask($input, $output, new Question('Family Name: ')),
         ];
 
 
-        $user = $this->store->create('core-user', $kvs);
+        $user = $this->store->create('core-user');
+        foreach ($kvs as $k => $v) {
+            $user->set($k, $v);
+        }
+        $user->save();
 
         $output->writeln(sprintf('<info>Created user "%s"</info>', $user->getId()));
     }
