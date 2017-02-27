@@ -69,3 +69,10 @@ services:
         arguments: [ "@as3_modlr.store" ]
         tags:
             - { name: "console.command"}
+
+    modlr_auth_bundle.event_subscriber.core_user:
+        private: true
+        class: Limit0\ModlrAuthBundle\EventSubscriber\CoreUserSubscriber
+        arguments: [ "@security.password_encoder" ]
+        tags:
+            - { name: as3_modlr.event_subscriber }
