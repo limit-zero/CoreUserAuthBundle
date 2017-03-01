@@ -15,7 +15,7 @@ security:
 
         api:
             context: core
-            pattern: ^/api\/1\.0
+            pattern: ^/rest
             provider: core_user
             guard:
                 authenticators:
@@ -33,11 +33,12 @@ security:
                 name: __modlr-auth
                 always_remember_me: true
             logout:
-                path: /api/auth/user/destroy
+                path: /auth/user/destroy
                 # delete_cookies: ~ # @todo Will need to determine if account cookies need deletion?
                 invalidate_session: false
                 success_handler: modlr_auth_bundle.security.logout_success_handler
 
     access_control:
-        - { path: ^/api/1\.0, roles: [ ROLE_ADMIN\USER ] }
+        - { path: ^/auth, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+        - { path: ^/rest, roles: [ ROLE_ADMIN\USER ] }
 

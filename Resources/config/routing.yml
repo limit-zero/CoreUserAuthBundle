@@ -1,15 +1,15 @@
 modlr_auth_bundle_user_create:
-    path: /api/auth/user/create
+    path: /auth/user/create
     defaults: { _controller: Limit0ModlrAuthBundle:Auth:userCreate }
     methods: [ POST ]
 
 modlr_auth_bundle_user_destroy:
-    path: /api/auth/user/destroy
+    path: /auth/user/destroy
 
 modlr_auth_bundle_user_retrieve:
-    path: /api/auth/user/retrieve
+    path: /auth/user/retrieve
     defaults: { _controller: Limit0ModlrAuthBundle:Auth:userRetrieve }
 
 modlr_auth_bundle_user_submit:
-    path: /api/auth/user/submit
+    path: /auth/user/submit
     methods: [ POST ]
