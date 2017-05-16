@@ -41,7 +41,9 @@ class CoreUser implements UserInterface, Serializable
         $this->password   = $model->get('password');
         $this->salt       = $model->get('salt');
         $this->username   = $model->get('email');
-        $this->roles      = ['ROLE_ADMIN\USER'];
+
+        $roles = $model->get('roles');
+        $this->roles = is_array($roles) && !empty($roles) ? $roles : ['ROLE_ADMIN\USER'];
     }
 
     /**
